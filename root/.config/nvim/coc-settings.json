@@ -1,0 +1,6 @@
+{
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "suggest.noselect": false,
+  "suggest.enablePreselect": true
+}
