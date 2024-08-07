@@ -25,9 +25,11 @@ apt: repos
 	  jq \
 	  neofetch \
 	  neovim \
+		pasystray \
 	  polybar \
 	  ripgrep \
 	  rofi \
+		tlp \
 	  tree \
 	  xclip \
 	  zsh
@@ -45,6 +47,7 @@ scripts:
 	./scripts/kitty.sh
 	./scripts/nodejs.sh
 	./scripts/omz.sh
+	./scripts/pyenv.sh
 
 .PHONY: go
 go:

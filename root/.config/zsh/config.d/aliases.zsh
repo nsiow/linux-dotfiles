@@ -3,6 +3,7 @@ alias ls='ls -G'
 
 # editing/sourcing configuration
 alias conf-edit-aliases='vim ~/.config/zsh/config.d/aliases.zsh'
+alias conf-edit-dunst='vim ~/.config/dunst/dunstrc'
 alias conf-edit-i3='vim ~/.config/i3/config'
 alias conf-edit-kitty='vim ~/.config/kitty/kitty.conf'
 alias conf-edit-omz='vim ~/.config/zsh/config.d/omz.zsh'

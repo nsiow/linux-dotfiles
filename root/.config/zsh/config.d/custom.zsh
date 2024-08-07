@@ -1,6 +1,9 @@
 # general stuff
 export CLICOLOR=1
 zstyle ':completion:*' menu select
+alias c='xclip -selection clipboard'
+alias p='xclip -selection clipboard -o'
+alias ls='ls --color=auto'
 
 # go stuff
 export PATH="$PATH:$(go env GOPATH)/bin:${GOROOT}/bin"
@@ -37,3 +40,9 @@ kitty-reload() {
 }
 export PATH="~/.local/kitty.app/bin:$PATH"
 export TERMINAL=kitty
+
+# python stuff
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
