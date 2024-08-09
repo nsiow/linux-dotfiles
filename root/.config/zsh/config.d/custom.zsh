@@ -29,7 +29,7 @@ export AWS_DEFAULT_REGION=us-west-2
 export AWS_PAGER=
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
-complete -C '/usr/local/bin/aws_completer' aws
+complete -C /snap/aws-cli/current/bin/aws_completer aws
 
 # jq stuff
 alias urlencode='jq -Sr @uri'

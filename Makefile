@@ -5,7 +5,7 @@
 # ------------------------------------------------------------
 
 .PHONY: setup
-setup: files apt
+setup: files install
 
 # ------------------------------------------------------------
 #  Packages
@@ -21,9 +21,9 @@ apt: repos
 	  curl \
 		fd-find \
 	  golang-go \
+	  htop \
 	  i3 \
 	  jq \
-	  neofetch \
 	  neovim \
 		pasystray \
 	  polybar \
@@ -55,7 +55,8 @@ go:
 
 .PHONY: fonts
 fonts:
-	sudo apt install -y fonts-go
+	sudo apt install -y \
+		fonts-inconsolata
 
 .PHONY: postinstall
 postinstall:
