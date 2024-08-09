@@ -108,7 +108,7 @@ nnoremap <silent> <leader>/ :Rg<CR>
 " --------------------------------------------------------------------------------
 
 " setting coc selection color
-hi CocMenuSel ctermfg=Gray guifg=#c678dd
+hi CocMenuSel ctermfg=Gray guifg=#000000 guibg=#ffffff
 
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
 let g:coc_node_path = '/usr/bin/node'
