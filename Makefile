@@ -24,6 +24,7 @@ apt: repos
 	  htop \
 	  i3 \
 	  jq \
+		maim \
 	  neovim \
 		pasystray \
 	  polybar \
@@ -32,6 +33,7 @@ apt: repos
 		tlp \
 	  tree \
 	  xclip \
+		xdotool \
 	  zsh
 	@echo '[✓] Installed apt packages'
 
