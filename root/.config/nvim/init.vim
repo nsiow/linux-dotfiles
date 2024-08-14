@@ -5,6 +5,7 @@
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+filetype plugin indent on
 set clipboard=unnamedplus
 set completeopt=noinsert,menuone,noselect
 set expandtab
@@ -35,10 +36,6 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 call plug#begin()
 
-" Plug 'RRethy/nvim-treesitter-textsubjects'
-" Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
-" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 Plug 'famiu/nvim-reload'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -50,6 +47,7 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'preservim/nerdtree'
 Plug 'romgrk/doom-one.vim'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -57,6 +55,7 @@ call plug#end()
 " vim-go
 " --------------------------------------------------------------------------------
 
+au BufWritePre,FileWritePre *.go :GoFmt
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
 let g:go_gopls_enabled = 0

@@ -32,7 +32,8 @@ autoload -Uz compinit && compinit
 complete -C /snap/aws-cli/current/bin/aws_completer aws
 
 # jq stuff
-alias urlencode='jq -Sr @uri'
+alias urlencode='python3 -c "import sys; from urllib.parse import quote as f;   print(f(sys.stdin.read()).strip())"'
+alias urldecode='python3 -c "import sys; from urllib.parse import unquote as f; print(f(sys.stdin.read()).strip())"'
 
 # kitty stuff
 kitty-reload() {
