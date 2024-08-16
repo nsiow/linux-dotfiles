@@ -12,11 +12,11 @@ LOG_DIR=/tmp/polybar
 
 # Launch all bars
 mkdir -p "${LOG_DIR}"
-for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+for MONITOR in $(xrandr --query | grep " connected" | cut -d" " -f1); do
   for BAR in $(rg '\[bar/([a-zA-Z0-9_]+)\]' -or '$1' ~/.config/polybar/config.ini); do
     echo "---" | tee -a "${LOG_DIR}/${BAR}"
-    MONITOR=$m polybar --reload -c "${CONFIG}" "${BAR}" 2>&1 | tee -a "${LOG_DIR}/${BAR}" &
-    echo "launched bar: ${BAR}"
+    echo "${MONITOR}/${BAR}" | tee -a "${LOG_DIR}/${BAR}"
+    MONITOR="${MONITOR}" polybar --reload -c "${CONFIG}" "${BAR}" 2>&1 | tee -a "${LOG_DIR}/${BAR}" &
   done
 done
 

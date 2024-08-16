@@ -18,22 +18,23 @@ install: apt scripts go fonts postinstall
 apt: repos
 	sudo apt update -y
 	sudo apt install -y \
+	  autorandr \
 	  curl \
-		fd-find \
+	  fd-find \
 	  golang-go \
 	  htop \
 	  i3 \
 	  jq \
-		maim \
+	  maim \
 	  neovim \
-		pasystray \
+	  pasystray \
 	  polybar \
 	  ripgrep \
 	  rofi \
-		tlp \
+	  tlp \
 	  tree \
 	  xclip \
-		xdotool \
+	  xdotool \
 	  zsh
 	@echo '[✓] Installed apt packages'
 
