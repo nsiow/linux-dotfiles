@@ -24,6 +24,8 @@ alias p='pbpaste'
 # vim stuff
 alias vim='nvim'
 alias v='nvim'
+alias wiki='nvim ~/vimwiki/index.wiki'
+alias todo='nvim ~/vimwiki/TODO.wiki'
 
 # functions
 alias py2js='python3 -c "import ast, json, sys; print(json.dumps(ast.literal_eval(sys.stdin.read())))"'
