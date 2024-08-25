@@ -24,8 +24,8 @@ export SAVEHIST=$HISTSIZE
 alias make='make -s'
 
 # aws stuff
-export AWS_REGION=us-west-2
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_REGION=us-east-1
+export AWS_DEFAULT_REGION=us-east-1
 export AWS_PAGER=
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -39,11 +39,16 @@ alias urldecode='python3 -c "import sys; from urllib.parse import unquote as f; 
 kitty-reload() {
   kill -SIGUSR1 $(pidof kitty)
 }
-export PATH="~/.local/kitty.app/bin:$PATH"
+export PATH="$PATH:~/.local/kitty.app/bin"
 export TERMINAL=kitty
 
 # python stuff
+export PATH="$PATH:/home/nsiow/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# notifications
+alias ns-pause-notifications='dunstctl set-paused true'
+alias ns-resume-notifications='dunstctl set-paused false'

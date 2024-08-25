@@ -56,10 +56,16 @@ scripts:
 go:
 	go install github.com/junegunn/fzf@latest
 
+.PHONY: py
+py:
+	python3 -m pip install \
+	  cfn-flip \
+	  kitti3
+
 .PHONY: fonts
 fonts:
 	sudo apt install -y \
-		fonts-inconsolata
+	  fonts-inconsolata
 
 .PHONY: postinstall
 postinstall:
