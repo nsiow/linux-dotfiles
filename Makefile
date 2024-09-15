@@ -46,6 +46,7 @@ repos:
 
 .PHONY: scripts
 scripts:
+	./scripts/brave.sh
 	./scripts/docker.sh
 	./scripts/kitty.sh
 	./scripts/nodejs.sh
