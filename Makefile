@@ -29,6 +29,7 @@ apt: repos
 	  neovim \
 	  pasystray \
 	  polybar \
+	  pv \
 	  ripgrep \
 	  rofi \
 	  tlp \

@@ -1,9 +1,6 @@
 # general stuff
 export CLICOLOR=1
 zstyle ':completion:*' menu select
-alias c='xclip -selection clipboard'
-alias p='xclip -selection clipboard -o'
-alias ls='ls --color=auto'
 
 # go stuff
 export PATH="$PATH:$(go env GOPATH)/bin:${GOROOT}/bin"
@@ -20,9 +17,6 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
 
-# make stuff
-alias make='make -s'
-
 # aws stuff
 export AWS_REGION=us-east-1
 export AWS_DEFAULT_REGION=us-east-1
@@ -30,10 +24,6 @@ export AWS_PAGER=
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 complete -C /snap/aws-cli/current/bin/aws_completer aws
-
-# jq stuff
-alias urlencode='python3 -c "import sys; from urllib.parse import quote as f;   print(f(sys.stdin.read()).strip())"'
-alias urldecode='python3 -c "import sys; from urllib.parse import unquote as f; print(f(sys.stdin.read()).strip())"'
 
 # kitty stuff
 kitty-reload() {
@@ -49,6 +39,5 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# notifications
-alias ns-pause-notifications='dunstctl set-paused true'
-alias ns-resume-notifications='dunstctl set-paused false'
+# k8s stuff
+export KUBE_EDITOR='nvim'
