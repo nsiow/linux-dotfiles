@@ -1,5 +1,8 @@
 # general stuff
-alias ls='ls -G'
+alias c='xclip -selection clipboard'
+alias p='xclip -selection clipboard -o'
+alias g='git'
+alias ls='ls -G --color=auto'
 
 # editing/sourcing configuration
 alias conf-edit-aliases='vim ~/.config/zsh/config.d/aliases.zsh'
@@ -13,13 +16,8 @@ alias conf-edit-work='vim ~/.config/zsh/config.d/work.zsh'
 alias conf-edit-zshrc='vim ~/.config/zsh/config.d/custom.zsh'
 alias conf-reload='source ~/.zshrc'
 
-# Directory stuff
+# directoy stuff
 alias src='cd ~/src'
-
-# Copy/paste
-# TODO(nsiow) move these to linux equivalents
-alias c='pbcopy'
-alias p='pbpaste'
 
 # vim stuff
 alias vim='nvim'
@@ -29,3 +27,12 @@ alias todo='nvim ~/vimwiki/TODO.wiki'
 
 # functions
 alias py2js='python3 -c "import ast, json, sys; print(json.dumps(ast.literal_eval(sys.stdin.read())))"'
+alias urlencode='python3 -c "import sys; from urllib.parse import quote as f;   print(f(sys.stdin.read()).strip())"'
+alias urldecode='python3 -c "import sys; from urllib.parse import unquote as f; print(f(sys.stdin.read()).strip())"'
+
+# notifications
+alias ns-pause-notifications='dunstctl set-paused true'
+alias ns-resume-notifications='dunstctl set-paused false'
+
+# aws stuff
+alias gci='aws sts get-caller-identity'

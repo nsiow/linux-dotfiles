@@ -55,7 +55,7 @@ call plug#end()
 " vim-go
 " --------------------------------------------------------------------------------
 
-au BufWritePre,FileWritePre *.go :GoFmt
+au BufWritePre,FileWritePre *.go :GoImports
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
 let g:go_gopls_enabled = 0
@@ -81,27 +81,19 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " --------------------------------------------------------------------------------
-" vim-which-key
-" --------------------------------------------------------------------------------
-
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-autocmd FileType which_key highlight WhichKey ctermbg=3 ctermfg=7
-autocmd FileType which_key highlight WhichKeySeperator ctermbg=12 ctermfg=7
-autocmd FileType which_key highlight WhichKeyGroup cterm=bold ctermbg=12 ctermfg=7
-autocmd FileType which_key highlight WhichKeyDesc ctermbg=12 ctermfg=7
-
-" --------------------------------------------------------------------------------
 " fzf
 " --------------------------------------------------------------------------------
 
+nnoremap <silent> <leader>/       :Rg<CR>
+nnoremap <silent> <leader>:       :Commands<CR>
+nnoremap <silent> <leader>;       :BLines<CR>
 nnoremap <silent> <leader><space> :Files<CR>
-nnoremap <silent> <leader>a :Buffers<CR>
-nnoremap <silent> <leader>A :Windows<CR>
-nnoremap <silent> <leader>; :BLines<CR>
-nnoremap <silent> <leader>o :BTags<CR>
-nnoremap <silent> <leader>O :Tags<CR>
-nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :Rg<CR>
+nnoremap <silent> <leader>?       :History<CR>
+nnoremap <silent> <leader>A       :Windows<CR>
+nnoremap <silent> <leader>O       :Tags<CR>
+nnoremap <silent> <leader>a       :Buffers<CR>
+nnoremap <silent> <leader>c       :Commands<CR>
+nnoremap <silent> <leader>o       :BTags<CR>
 
 " --------------------------------------------------------------------------------
 " coc
@@ -141,8 +133,9 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -172,18 +165,6 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-" nnoremap <silent> gd <Plug>(coc-definition)
-" nnoremap <silent> gy <Plug>(coc-type-definition)
-" nnoremap <silent> gi <Plug>(coc-implementation)
-" nnoremap <silent> gr <Plug>(coc-references)
-" nnoremap <silent> gd <Plug>(coc-definition)
-" nnoremap <silent> gy <Plug>(coc-type-definition)
-" nnoremap <silent> gi <Plug>(coc-implementation)
-" nnoremap <silent> gr <Plug>(coc-references)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -208,8 +189,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -285,7 +266,7 @@ nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
@@ -421,3 +402,9 @@ EOF
 " --------------------------------------------------------------------------------
 
 colorscheme doom-one
+
+" --------------------------------------------------------------------------------
+" vimwiki
+" --------------------------------------------------------------------------------
+
+let g:vimwiki_conceallevel=0
