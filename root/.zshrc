@@ -8,3 +8,5 @@ for conf in $(ls "$HOME/.config/zsh/config.d/" | grep -E '\.zsh$'| grep -v omz);
   source "$HOME/.config/zsh/config.d/${conf}"
 done
 unset conf
+
+[[ ":$PATH:" != *":$HOME/.kube/bin:"* ]] && export PATH="$HOME/.kube/bin:${PATH}"
