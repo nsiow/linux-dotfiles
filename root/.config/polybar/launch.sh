@@ -16,6 +16,7 @@ for MONITOR in $(xrandr --query | grep " connected" | cut -d" " -f1); do
   for BAR in $(rg '\[bar/([a-zA-Z0-9_]+)\]' -or '$1' ~/.config/polybar/config.ini); do
     echo "---" | tee -a "${LOG_DIR}/${BAR}"
     echo "${MONITOR}/${BAR}" | tee -a "${LOG_DIR}/${BAR}"
+    echo MONITOR="${MONITOR}" polybar --reload -c "${CONFIG}" "${BAR}" >> "${LOG_DIR}/${BAR}"
     MONITOR="${MONITOR}" polybar --reload -c "${CONFIG}" "${BAR}" 2>&1 | tee -a "${LOG_DIR}/${BAR}" &
   done
 done
