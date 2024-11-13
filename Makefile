@@ -12,7 +12,7 @@ setup: files install
 # ------------------------------------------------------------
 
 .PHONY: install
-install: apt scripts go fonts postinstall
+install: apt scripts go py fonts postinstall
 
 .PHONY: apt
 apt: repos
