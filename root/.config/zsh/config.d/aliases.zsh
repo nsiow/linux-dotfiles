@@ -13,6 +13,7 @@ alias conf-edit-omz='vim ~/.config/zsh/config.d/omz.zsh'
 alias conf-edit-polybar='vim ~/.config/polybar/config.ini'
 alias conf-edit-vimrc='vim ~/.config/nvim/init.vim'
 alias conf-edit-work='vim ~/.config/zsh/config.d/work.zsh'
+alias conf-edit-xrandr='vim ~/.config/zsh/config.d/xrandr.zsh'
 alias conf-edit-zshrc='vim ~/.config/zsh/config.d/custom.zsh'
 alias conf-reload='source ~/.zshrc'
 
@@ -36,3 +37,6 @@ alias ns-resume-notifications='dunstctl set-paused false'
 
 # aws stuff
 alias gci='aws sts get-caller-identity'
+
+# laptop stuff
+alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage'

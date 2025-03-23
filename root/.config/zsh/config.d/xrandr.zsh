@@ -1,3 +1,5 @@
 alias xr='xrandr'
 alias xr-auto='xrandr --auto'
+alias xr-office='xrandr --output DP-3 --primary --mode 3440x1440 --output eDP-1 --mode 2880x1800 --below DP-3'
 alias xr-home='xrandr --output DisplayPort-1 --primary --mode 5120x1440 --output DisplayPort-0 --mode 1920x1080 --pos 5120x180'
+alias xr-home-hdmi='xrandr --output HDMI-1 --primary --mode 5120x1440 --output eDP-1 --off'

@@ -14,14 +14,17 @@ bindsym $mod+Return exec kitty
 font pango:Inconsolata 15
 
 # change border color
-# client.focused #ffffff #ffffff #000000 #ffffff
-client.focused #00ff98 #00ff98 #000000 #00ff98
+client.focused #ffffff #ffffff #000000 #ffffff
+# client.focused #00ff98 #00ff98 #000000 #00ff98
 
 # use rofi instead of dmenu
 bindsym $mod+d exec "rofi -combi-modi window,drun font -theme sidebar -font 'Inconsolata 15' -show combi"
 
 # audio applet
 # exec --no-startup-id pasystray
+
+# browser
+bindsym $mod+b exec brave-browser
 
 # caffeine
 exec --no-startup-id caffeine-indicator
