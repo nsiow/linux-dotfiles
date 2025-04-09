@@ -3,6 +3,7 @@ export CLICOLOR=1
 zstyle ':completion:*' menu select
 
 # go stuff
+export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$(go env GOPATH)/bin:${GOROOT}/bin"
 
 # fzf

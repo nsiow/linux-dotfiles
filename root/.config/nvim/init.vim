@@ -6,6 +6,7 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 filetype plugin indent on
+set cc=100
 set clipboard=unnamedplus
 set completeopt=noinsert,menuone,noselect
 set expandtab
@@ -38,16 +39,20 @@ call plug#begin()
 
 Plug 'famiu/nvim-reload'
 Plug 'fatih/vim-go'
+Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
 Plug 'romgrk/doom-one.vim'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
+Plug 'wellle/targets.vim'
 
 call plug#end()
 
@@ -56,13 +61,13 @@ call plug#end()
 " --------------------------------------------------------------------------------
 
 au BufWritePre,FileWritePre *.go :GoImports
-let g:go_def_mapping_enabled = 0
-let g:go_doc_keywordprg_enabled = 0
-let g:go_gopls_enabled = 0
-" let g:go_gopls_options = ['-remote=auto']
-" let g:go_def_mode='gopls'
-" let g:go_info_mode='gopls'
-" let g:go_referrers_mode='gopls'
+" let g:go_def_mapping_enabled = 0
+" let g:go_doc_keywordprg_enabled = 0
+" let g:go_gopls_enabled = 0
+let g:go_gopls_options = ['-remote=auto']
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_referrers_mode='gopls'
 
 " --------------------------------------------------------------------------------
 " nerdtree
@@ -85,22 +90,24 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " --------------------------------------------------------------------------------
 
 nnoremap <silent> <leader>/       :Rg<CR>
-nnoremap <silent> <leader>:       :Commands<CR>
 nnoremap <silent> <leader>;       :BLines<CR>
 nnoremap <silent> <leader><space> :Files<CR>
 nnoremap <silent> <leader>?       :History<CR>
 nnoremap <silent> <leader>A       :Windows<CR>
 nnoremap <silent> <leader>O       :Tags<CR>
 nnoremap <silent> <leader>a       :Buffers<CR>
-nnoremap <silent> <leader>c       :Commands<CR>
+nnoremap <silent> <leader><enter> :Commands<CR>
 nnoremap <silent> <leader>o       :BTags<CR>
+
+" --------------------------------------------------------------------------------
+" tagbar
+" --------------------------------------------------------------------------------
+
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " --------------------------------------------------------------------------------
 " coc
 " --------------------------------------------------------------------------------
-
-" setting coc selection color
-hi CocMenuSel ctermfg=Gray guifg=#000000 guibg=#ffffff
 
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
 let g:coc_node_path = '/usr/bin/node'
@@ -398,10 +405,17 @@ EOF
 " EOF
 
 " --------------------------------------------------------------------------------
-" doom-one
+" colorscheme
 " --------------------------------------------------------------------------------
 
-colorscheme doom-one
+" setting coc selection color
+hi CocMenuSel ctermfg=Gray guifg=#000000 guibg=#ffffff
+
+set notermguicolors
+colorscheme dim
+
+hi CocHighlightText ctermbg=0
+hi ColorColumn ctermfg=0
 
 " --------------------------------------------------------------------------------
 " vimwiki

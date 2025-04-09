@@ -1,2 +1,5 @@
 # This is peak work-life balance
 root/.config/zsh/config.d/work.zsh
+
+# Kitty themes are downloaded separately
+root/.config/kitty/kitty-themes

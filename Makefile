@@ -49,6 +49,7 @@ repos:
 scripts:
 	./scripts/brave.sh
 	./scripts/docker.sh
+	./scripts/gh.sh
 	./scripts/kitty.sh
 	./scripts/nodejs.sh
 	./scripts/omz.sh
