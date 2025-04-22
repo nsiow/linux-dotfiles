@@ -12,7 +12,7 @@ setup: files install
 # ------------------------------------------------------------
 
 .PHONY: install
-install: apt scripts go py fonts postinstall
+install: apt scripts py fonts postinstall
 
 .PHONY: apt
 apt: repos
@@ -21,7 +21,6 @@ apt: repos
 	  autorandr \
 	  curl \
 	  fd-find \
-	  golang-go \
 	  htop \
 	  i3 \
 	  jq \
@@ -49,7 +48,6 @@ repos:
 scripts:
 	./scripts/brave.sh
 	./scripts/docker.sh
-	./scripts/gh.sh
 	./scripts/kitty.sh
 	./scripts/nodejs.sh
 	./scripts/omz.sh
@@ -68,6 +66,7 @@ py:
 .PHONY: fonts
 fonts:
 	sudo apt install -y \
+	  fonts-go \
 	  fonts-inconsolata
 
 .PHONY: postinstall
