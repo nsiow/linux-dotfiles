@@ -6,7 +6,7 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 filetype plugin indent on
-set cc=100
+set cc=102  " visual clarity for an actual line length max of 100
 set clipboard=unnamedplus
 set completeopt=noinsert,menuone,noselect
 set expandtab
@@ -32,6 +32,12 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " --------------------------------------------------------------------------------
+" commands
+" --------------------------------------------------------------------------------
+
+command! BufOnly silent! execute "%bd|e#|bd#"
+
+" --------------------------------------------------------------------------------
 " vim-plug
 " --------------------------------------------------------------------------------
 
@@ -42,14 +48,13 @@ Plug 'fatih/vim-go'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
-Plug 'romgrk/doom-one.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'wellle/targets.vim'
@@ -75,15 +80,6 @@ let g:go_referrers_mode='gopls'
 
 " nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
-
-" --------------------------------------------------------------------------------
-" telescope
-" --------------------------------------------------------------------------------
-
-" nnoremap <leader><space> <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-" nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " --------------------------------------------------------------------------------
 " fzf
@@ -387,24 +383,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " --------------------------------------------------------------------------------
-" treesitter-textsubjects
-" --------------------------------------------------------------------------------
-
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"     textsubjects = {
-"         enable = true,
-"         prev_selection = ',', -- (Optional) keymap to select the previous selection
-"         keymaps = {
-"             ['.'] = 'textsubjects-smart',
-"             [';'] = 'textsubjects-container-outer',
-"             ['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
-"         },
-"     },
-" }
-" EOF
-
-" --------------------------------------------------------------------------------
 " colorscheme
 " --------------------------------------------------------------------------------
 
@@ -416,6 +394,8 @@ colorscheme dim
 
 hi CocHighlightText ctermbg=0
 hi ColorColumn ctermfg=0
+hi Conceal ctermfg=red ctermbg=darkgray
+hi clear SignColumn
 
 " --------------------------------------------------------------------------------
 " vimwiki
