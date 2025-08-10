@@ -17,7 +17,9 @@ font pango:Go Mono 13
 # client.focused #ffffff #ffffff #000000 #ffffff
 # client.focused #00ff98 #00ff98 #000000 #00ff98
 # client.focused #772953 #772953 #ffffff #772953
-client.focused #00ADD8 #00ADD8 #ffffff #00ADD8
+# client.focused #00ADD8 #00ADD8 #ffffff #00ADD8
+client.focused #FF7C0A #FF7C0A #ffffff #FF7C0A
+
 
 # use rofi instead of dmenu
 bindsym $mod+d exec "rofi -combi-modi window,drun font -theme sidebar -font 'Inconsolata 15' -show combi"
@@ -34,6 +36,9 @@ bindsym $mod+b exec brave-browser
 # caffeine
 exec --no-startup-id caffeine-indicator
 
+# usbreset
+exec --no-startup-id sudo usbreset "Blue Microphones"
+
 # workspace naming
 bindsym $mod+n exec ~/.config/i3/rename.sh
 
@@ -42,15 +47,16 @@ bindsym $mod+Shift+n exec dunstctl close-all
 
 # screenshots
 # save window
-bindsym $mod+p exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+# bindsym $mod+p exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
 # save selection
-bindsym $mod+Shift+p exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +%s).png"
+bindsym $mod+Shift+s exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +%s).png"
 # copy window
-bindsym $mod+Ctrl+p exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+# bindsym $mod+Ctrl+p exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # copy selection
 bindsym $mod+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # xrandr
+bindsym $mod+Shift+x exec --no-startup-id xrandr --auto
 bindsym $mod+Shift+Ctrl+a exec --no-startup-id autorandr --change
 
 # launch polybar

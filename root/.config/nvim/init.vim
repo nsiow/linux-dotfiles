@@ -74,6 +74,9 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_referrers_mode='gopls'
 
+nnoremap gt  :GoTest<CR>
+nnoremap gtc :GoCoverageToggle<CR>
+
 " --------------------------------------------------------------------------------
 " nerdtree
 " --------------------------------------------------------------------------------
@@ -84,6 +87,10 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " --------------------------------------------------------------------------------
 " fzf
 " --------------------------------------------------------------------------------
+
+let g:fzf_vim = {}
+
+" let g:fzf_vim.preview_window = []
 
 nnoremap <silent> <leader>/       :Rg<CR>
 nnoremap <silent> <leader>;       :BLines<CR>

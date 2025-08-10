@@ -17,7 +17,7 @@ alias conf-edit-xrandr='vim ~/.config/zsh/config.d/xrandr.zsh'
 alias conf-edit-zshrc='vim ~/.config/zsh/config.d/custom.zsh'
 alias conf-reload='source ~/.zshrc'
 
-# directoy stuff
+# directory stuff
 alias src='cd ~/src'
 
 # vim stuff
@@ -30,6 +30,7 @@ alias todo='nvim ~/vimwiki/TODO.wiki'
 alias py2js='python3 -c "import ast, json, sys; print(json.dumps(ast.literal_eval(sys.stdin.read())))"'
 alias urlencode='python3 -c "import sys; from urllib.parse import quote as f;   print(f(sys.stdin.read()).strip())"'
 alias urldecode='python3 -c "import sys; from urllib.parse import unquote as f; print(f(sys.stdin.read()).strip())"'
+alias curl-json='curl -H "Content-Type: application/json" -H "Accept: application/json"'
 
 # notifications
 alias ns-pause-notifications='dunstctl set-paused true'
