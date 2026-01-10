@@ -50,14 +50,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-" Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
-Plug 'wellle/targets.vim'
 
 call plug#end()
 
@@ -66,9 +61,6 @@ call plug#end()
 " --------------------------------------------------------------------------------
 
 au BufWritePre,FileWritePre *.go :GoImports
-" let g:go_def_mapping_enabled = 0
-" let g:go_doc_keywordprg_enabled = 0
-" let g:go_gopls_enabled = 0
 let g:go_gopls_options = ['-remote=auto']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'

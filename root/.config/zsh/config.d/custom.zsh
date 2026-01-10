@@ -46,6 +46,24 @@ eval "$(pyenv virtualenv-init -)"
 # k8s stuff
 export KUBE_EDITOR='nvim'
 
+# git stuff
+git-new-tree() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: git-new-tree <branch-name>"
+    return 1
+  fi
+
+  local branch="$1"
+  local dir="../${branch//\//-}"
+
+  git pull origin main && \
+    git worktree add -b "$branch" "$dir" && \
+    mkdir -p "$dir/.claude" && \
+    cp .claude/settings.local.json "$dir/.claude/" 2>/dev/null
+
+  echo "Created worktree at $dir with branch $branch"
+}
+
 # genai stuff
 alias cc='claude'
 alias gm='gemini'

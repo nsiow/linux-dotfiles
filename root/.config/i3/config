@@ -77,7 +77,7 @@ exec_always --no-startup-id xset r rate 200 75
 bindsym $mod+x exec i3lock -c 000000 && systemctl suspend
 
 # kitti3
-exec_always --no-startup-id ~/.local/bin/kitti3 -p CB -s 1.0 0.33 -- -c ~/.config/kitty/kitti3.conf
+exec_always --no-startup-id ~/.local/bin/kitti3 -p LC -s 0.3 1
 bindsym $mod+t nop kitti3
 
 # --------------------------------------------------------------------------------
