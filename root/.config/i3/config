@@ -11,14 +11,15 @@ set $mod Mod1
 bindsym $mod+Return exec kitty
 
 # change default font
-font pango:Go Mono 13
+font pango:Inconsolata 15
 
 # change border color
 # client.focused #ffffff #ffffff #000000 #ffffff
+client.focused #ebdbb2 #ebdbb2 #000000 #ebdbb2
 # client.focused #00ff98 #00ff98 #000000 #00ff98
 # client.focused #772953 #772953 #ffffff #772953
 # client.focused #00ADD8 #00ADD8 #ffffff #00ADD8
-client.focused #FF7C0A #FF7C0A #ffffff #FF7C0A
+# client.focused #FF7C0A #FF7C0A #ffffff #FF7C0A
 
 
 # use rofi instead of dmenu
@@ -134,7 +135,7 @@ bindsym $mod+Shift+equal move container to workspace number $ws12
 # assign [class="(?i)slack"] $ws7
 # assign [class="(?i)crx_kjgfgldnnfoeklkmfkjfagphfepbbdan"] $ws8 # google meet
 # assign [class="(?i)thunderbird"] $ws9
-assign [class="(?i)discord"] $ws10
+assign [class="(?i)discord"] $ws11
 assign [class="(?i)pulseui"] $ws12
 
 # --------------------------------------------------------------------------------

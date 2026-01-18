@@ -47,7 +47,7 @@ map ctrl+shift+r load_config_file
 # ------------------------------------------------------------
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark Soft
+# Gruvbox Light
 include current-theme.conf
 # END_KITTY_THEME
 

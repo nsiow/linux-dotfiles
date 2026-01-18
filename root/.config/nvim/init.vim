@@ -50,8 +50,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+" Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'tpope/vim-fugitive'
@@ -92,9 +92,12 @@ let g:fzf_vim = {}
 
 " let g:fzf_vim.preview_window = []
 
+" Set FZF to use ripgrep and respect .gitignore files
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+
 nnoremap <silent> <leader>/       :Rg<CR>
 nnoremap <silent> <leader>;       :BLines<CR>
-nnoremap <silent> <leader><space> :Files<CR>
+nnoremap <silent> <leader><space> :GFiles<CR>
 nnoremap <silent> <leader>?       :History<CR>
 nnoremap <silent> <leader>A       :Windows<CR>
 nnoremap <silent> <leader>O       :Tags<CR>
@@ -294,44 +297,44 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " treesitter
 " --------------------------------------------------------------------------------
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
-EOF
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  indent = {
-    enable = true
-  }
-}
-EOF
-
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable                     " Disable folding at startup.
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   highlight = {
+"     enable = true,
+"     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+"     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+"     -- Using this option may slow down your editor, and you may see some duplicate highlights.
+"     -- Instead of true it can also be a list of languages
+"     additional_vim_regex_highlighting = false,
+"   },
+" }
+" EOF
+" 
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   incremental_selection = {
+"     enable = true,
+"     keymaps = {
+"       init_selection = "gnn", -- set to `false` to disable one of the mappings
+"       node_incremental = "grn",
+"       scope_incremental = "grc",
+"       node_decremental = "grm",
+"     },
+"   },
+" }
+" EOF
+" 
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   indent = {
+"     enable = true
+"   }
+" }
+" EOF
+" 
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
+" set nofoldenable                     " Disable folding at startup.
 
 " --------------------------------------------------------------------------------
 " treesitter-textobjects
@@ -339,55 +342,55 @@ set nofoldenable                     " Disable folding at startup.
 
 " https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  textobjects = {
-    select = {
-      enable = true,
-
-      -- Automatically jump forward to textobj, similar to targets.vim
-      lookahead = true,
-
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["as"] = "@scope",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["al"] = "@loop.outer",
-        ["il"] = "@loop.inner",
-        ["ab"] = "@block.outer",
-        ["ib"] = "@block.inner",
-        ["ar"] = "@frame.outer",
-        ["ir"] = "@frame.inner",
-      },
-      -- You can choose the select mode (default is charwise 'v')
-      --
-      -- Can also be a function which gets passed a table with the keys
-      -- * query_string: eg '@function.inner'
-      -- * method: eg 'v' or 'o'
-      -- and should return the mode ('v', 'V', or '<c-v>') or a table
-      -- mapping query_strings to modes.
-      selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
-      },
-      -- If you set this to `true` (default is `false`) then any textobject is
-      -- extended to include preceding or succeeding whitespace. Succeeding
-      -- whitespace has priority in order to act similarly to eg the built-in
-      -- `ap`.
-      --
-      -- Can also be a function which gets passed a table with the keys
-      -- * query_string: eg '@function.inner'
-      -- * selection_mode: eg 'v'
-      -- and should return true or false
-      include_surrounding_whitespace = true,
-    },
-  },
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   textobjects = {
+"     select = {
+"       enable = true,
+" 
+"       -- Automatically jump forward to textobj, similar to targets.vim
+"       lookahead = true,
+" 
+"       keymaps = {
+"         -- You can use the capture groups defined in textobjects.scm
+"         ["as"] = "@scope",
+"         ["af"] = "@function.outer",
+"         ["if"] = "@function.inner",
+"         ["ac"] = "@class.outer",
+"         ["ic"] = "@class.inner",
+"         ["al"] = "@loop.outer",
+"         ["il"] = "@loop.inner",
+"         ["ab"] = "@block.outer",
+"         ["ib"] = "@block.inner",
+"         ["ar"] = "@frame.outer",
+"         ["ir"] = "@frame.inner",
+"       },
+"       -- You can choose the select mode (default is charwise 'v')
+"       --
+"       -- Can also be a function which gets passed a table with the keys
+"       -- * query_string: eg '@function.inner'
+"       -- * method: eg 'v' or 'o'
+"       -- and should return the mode ('v', 'V', or '<c-v>') or a table
+"       -- mapping query_strings to modes.
+"       selection_modes = {
+"         ['@parameter.outer'] = 'v', -- charwise
+"         ['@function.outer'] = 'V', -- linewise
+"         ['@class.outer'] = '<c-v>', -- blockwise
+"       },
+"       -- If you set this to `true` (default is `false`) then any textobject is
+"       -- extended to include preceding or succeeding whitespace. Succeeding
+"       -- whitespace has priority in order to act similarly to eg the built-in
+"       -- `ap`.
+"       --
+"       -- Can also be a function which gets passed a table with the keys
+"       -- * query_string: eg '@function.inner'
+"       -- * selection_mode: eg 'v'
+"       -- and should return true or false
+"       include_surrounding_whitespace = true,
+"     },
+"   },
+" }
+" EOF
 
 " --------------------------------------------------------------------------------
 " colorscheme

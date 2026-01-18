@@ -6,6 +6,9 @@ zstyle ':completion:*' menu select
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$(go env GOPATH)/bin:${GOROOT}/bin"
 
+# node stuff
+export PATH="$PATH:/home/nsiow/.npm-global/bin"
+
 # fzf
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND='fd --type file --hidden'
@@ -42,3 +45,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # k8s stuff
 export KUBE_EDITOR='nvim'
+
+# genai stuff
+alias cc='claude'
+alias gm='gemini'
